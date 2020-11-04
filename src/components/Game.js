@@ -23,24 +23,11 @@ const calculateCookiesPerSecond = (purchasedItems) => {
   }, 0);
 };
 
-const Game = () => {
-  const [numCookies, setNumCookies] = React.useState(1000);
-
-  const [purchasedItems, setPurchasedItems] = React.useState({
-    cursor: 0,
-    grandma: 0,
-    farm: 0,
-  });
+const Game = ({ numCookies, setNumCookies, purchasedItems, setPurchasedItems }) => {
 
   const incrementCookies = () => {
     setNumCookies((c) => c + 1);
   };
-
-  useInterval(() => {
-    const numOfGeneratedCookies = calculateCookiesPerSecond(purchasedItems);
-
-    setNumCookies(numCookies + numOfGeneratedCookies);
-  }, 1000);
 
   React.useEffect(() => {
     document.title = `${numCookies} cookies - Cookie Clicker Workshop`;
